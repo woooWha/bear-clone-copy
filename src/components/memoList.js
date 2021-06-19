@@ -7,15 +7,13 @@ const MemoListBlock = styled.div`
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    background: rgba(0,0,0,0.9);
-    color: white;
 `
 
-function MemoList({memos}){
+function MemoList({memos,memoBinding}){
     return (
         <MemoListBlock>
             {memos.map(memo => 
-                <MemoItem memo={memo}></MemoItem>
+                <MemoItem memoBinding={memoBinding} memo={memo}></MemoItem>
             )}
         </MemoListBlock>
     )

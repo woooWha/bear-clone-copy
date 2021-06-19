@@ -1,10 +1,5 @@
-input::placeholder {
-  color: white;
-}
-
 body {
   background: #1c1d1f;
-  height: 600px;
 }
 
 .AfterTime {
@@ -18,4 +13,9 @@ body {
 
 .App {
   display: flex;
+}
+
+input::placeholder {
+  color: #525254;
+  text-align: center;
 }

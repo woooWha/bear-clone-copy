@@ -27,22 +27,21 @@ const MemoItemBlock = styled.div`
 `
 
 
+const 과거 = new Date(); //나중에 수정하자!
 
-function MemoItem({memo}){
-    const 지금 = new Date();
-    const 과거 = new Date(지금); //딱 지정하고 안 바껴야함.
-    const 흐른시간 = 지금-과거; 
+const 지금 = new Date();
+const 흐른시간 = 지금-과거; 
+
+function MemoItem({memo, memoBinding}){
+    const {id, Title, Content, time} = memo;
     return (
-    <div className="memoItemCSS">
-
-        <MemoItemBlock>
+        <MemoItemBlock onClick ={() => memoBinding(id)}>
             <div className="AfterTime">{흐른시간}초</div>
             <div>
                 <h1>{memo.Title}</h1>
                 <p>{memo.Content}</p>
             </div>
         </MemoItemBlock>
-    </div>
     )
 }
 

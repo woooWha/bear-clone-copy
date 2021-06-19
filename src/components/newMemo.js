@@ -34,15 +34,22 @@ const NewMemoBlock= styled.div`
         top: 60px;
         color: rgba(100,100,100,0.4);
     }
+    input::placeholder {
+    color: white;
+    text-align: left;
+    }
 `
 
-function NewMemo(){
+function NewMemo({찾은상품}){
     return (
+    <>
         <NewMemoBlock>
             <span className="bigPosition">H1</span>
-            <input className="big" placeholder="New Memo Title"></input>
-            <textarea></textarea>
-        </NewMemoBlock>
+
+            <input className="big" placeholder={찾은상품.title}></input>
+            <textarea placeholder=''></textarea>
+        </NewMemoBlock>  
+    </>
     )
 }
 

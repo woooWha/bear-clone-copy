@@ -19,9 +19,8 @@ const SearchBlock = styled.input`
     background: #222627;
     font-size: 16px;
     color: gray;
-    padding: 0px;
     border-radius: 8px;
-    text-align: center;
+    text-align: left;
     box-sizing: border-box;
     margin-right: 10px;
     outline: none;
@@ -44,11 +43,11 @@ const SearchAddBlock = styled.div`
 
 
 
-function SearchAndAdd () {
+function SearchAndAdd ({addMemo}) {
     return (
         <SearchAndAddBlock>
-            <SearchBlock placeholder='메모 검색'></SearchBlock>
-            <SearchAddBlock><MdCreate/></SearchAddBlock> 
+            <SearchBlock placeholder='🔎메모 검색'></SearchBlock>
+            <SearchAddBlock onClick={addMemo}><MdCreate/></SearchAddBlock> 
         </SearchAndAddBlock>
     )
 }
