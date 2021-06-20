@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 
-const NewMemoBlock= styled.div`
+const NewMemoBlock= styled.form`
     width: 100%;
     height: 100%;
     padding: 50px 90px;
@@ -40,14 +40,15 @@ const NewMemoBlock= styled.div`
     }
 `
 
-function NewMemo({찾은상품}){
+function NewMemo({memos, 아이디, addMemo}){
+
     return (
     <>
         <NewMemoBlock>
             <span className="bigPosition">H1</span>
 
-            <input className="big" placeholder={찾은상품.title}></input>
-            <textarea placeholder=''></textarea>
+            <input className="big" placeholder={memos[아이디].Title}></input>
+            <textarea  placeholder={memos[아이디].Content}></textarea>
         </NewMemoBlock>  
     </>
     )
