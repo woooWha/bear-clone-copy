@@ -5,7 +5,7 @@ import MemoList from './components/memoList';
 import { useState } from 'react';
 import NewMemo from './components/newMemo';
 
-const 현재의시간 = new Date();
+
 function App() {
   const [memos,setmemo] = useState([{
     id:1,
@@ -29,22 +29,20 @@ function App() {
     set아이디(id-1)
   }
 
-
-
-
+//3. memoItem  등록한 시간이후 지난 시간이 적혀 있고, 새메모 버튼을 클릭하면 지난 시간이 업데이트 된다.  Time= (현재시간.getTime - 게시물의 등록(클릭)지점의 시간.getTime)/1000
  const addMemo = (data) => {
-  const distance = Date.now() - new Date(data).getTime()
-  const memo ={
+ const memo ={
      id: nextId,
      Title: '멋진 새 메모',
      Content: '편안하게 무언가 적어보세요',
-     Time: distance
+     Time: (new Date().getTime() - data)
    }
    setmemo(memos.concat(memo))
-   nextId++; 
+   nextId++
  }
- 
- 
+
+
+
   return (
     <div className="App">
       <div>
@@ -64,10 +62,9 @@ componentList
 메모를 검색하면 메모리스트에서 선별해 나온다. add 버튼을 누르면 빈 메모지가 오른 쪽에 뜬다.
 
 2. memoList
-memoItem들이 나열돼 있게 해주는 부모다.
+memoItem들이 나열돼 있게 해주는 부모다. 완료!
 
-3. memoItem
-등록한 시간이후 지난 시간이 적혀 있고, 새메모 버튼을 클릭하면 지난 시간이 업데이트 된다. 
+
 
 4. newMemo
 H1이 적혀있는 제목란과

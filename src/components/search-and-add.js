@@ -47,7 +47,7 @@ function SearchAndAdd ({addMemo}) {
     return (
         <SearchAndAddBlock>
             <SearchBlock placeholder='🔎메모 검색'></SearchBlock>
-            <SearchAddBlock onClick={()=>addMemo(new Date())}><MdCreate/></SearchAddBlock> 
+            <SearchAddBlock onClick={()=>addMemo(new Date().getTime())}><MdCreate/></SearchAddBlock> 
         </SearchAndAddBlock>
     )
 }
