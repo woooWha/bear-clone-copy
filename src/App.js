@@ -56,23 +56,4 @@ function App() {
 }
 
 
-/*
-componentList
-1. search and add
-메모를 검색하면 메모리스트에서 선별해 나온다. add 버튼을 누르면 빈 메모지가 오른 쪽에 뜬다.
-
-2. memoList
-memoItem들이 나열돼 있게 해주는 부모다. 완료!
-
-
-
-4. newMemo
-H1이 적혀있는 제목란과
-하단에는 자유롭게 적는 메모란이 있다.
-
-(1)메모 아이템을 하나 클릭하면 그에 맞게 적었던 메모들이 나온다.
-=== onClick, 맵돌리고, 클릭과 일치하는 id의 memo의 title과 content를 데이터바인딩한다.
-*/
-
-
 export default App;
