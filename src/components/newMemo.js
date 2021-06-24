@@ -40,15 +40,26 @@ const NewMemoBlock= styled.form`
     }
 `
 
-function NewMemo({memos, 아이디, addMemo}){
+function NewMemo({memos, 아이디, onUpdate, onUpdate2}){
+
+    const[value,setValue] = useState('');
+    const[value2,setValue2] =useState('');
+    const onChange = e => setValue(e.target.value);
+    const onChange2 = e => setValue2(e.target.value);
+
+    const onSubmit = e => {
+        e.preventDefault();
+        onUpdate(아이디+1, value);
+        onUpdate2(아이디+1, value2);
+    }
 
     return (
     <>
-        <NewMemoBlock>
+        <NewMemoBlock onSubmit={onSubmit}>
             <span className="bigPosition">H1</span>
 
-            <input className="big" placeholder={memos[아이디].Title}></input>
-            <textarea  placeholder={memos[아이디].Content}></textarea>
+            <input value={value} onChange={onChange} className="big" placeholder={memos[아이디].Title}></input>
+            <textarea  value={value2} onChange={onChange2} placeholder={memos[아이디].Content}></textarea>
         </NewMemoBlock>  
     </>
     )

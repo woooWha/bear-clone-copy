@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdSearch } from "react-icons/md";
 import { MdCreate } from "react-icons/md";
@@ -25,6 +25,7 @@ const SearchBlock = styled.input`
     margin-right: 10px;
     outline: none;
     border: 1px solid rgba(100,100,100,0.4);
+    cursor: pointer;
 `
 
 const SearchAddBlock = styled.div`
@@ -43,12 +44,13 @@ const SearchAddBlock = styled.div`
 
 
 
-function SearchAndAdd ({addMemo}) {
+function SearchAndAdd ({addmemo}) {
+
     return (
         <SearchAndAddBlock>
             <SearchBlock placeholder='🔎메모 검색'></SearchBlock>
-            <SearchAddBlock onClick={()=>addMemo(new Date().getTime())}><MdCreate/></SearchAddBlock> 
-        </SearchAndAddBlock>
+            <SearchAddBlock onClick={()=>addmemo(new Date().getTime())}><MdCreate/></SearchAddBlock> 
+        </SearchAndAddBlock>                    /// new Date말고 클릭했을 때 고정된 시간을 어떻게 보내징..
     )
 }
 

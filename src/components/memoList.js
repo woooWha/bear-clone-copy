@@ -13,7 +13,7 @@ function MemoList({memos, getItem}){
     return (
         <MemoListBlock>
             {memos.map(memo => 
-                <MemoItem memo={memo} getItem={getItem}></MemoItem>
+                <MemoItem memo={memo} getItem={getItem} key={memo.id}></MemoItem>
             )}
         </MemoListBlock>
     )
