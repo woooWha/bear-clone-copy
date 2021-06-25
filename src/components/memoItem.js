@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {getCreatedAt} from '../lib/dateUtil'
 
 const MemoItemBlock = styled.div`
     height:98px;
@@ -29,13 +30,13 @@ const MemoItemBlock = styled.div`
 
 
 
-function MemoItem({memo, getItem}){
-    const {id, Title, Content, Time} = memo;
+function MemoItem({memo, getItem, onChangeSelectedMemo}){
+    const {id, Title, Content, createdAt} = memo;
 
 
     return (
-        <MemoItemBlock onClick={()=>{getItem(id)}}>
-            <div className="AfterTime">{Time}초</div>
+        <MemoItemBlock onClick={()=>{getItem(id); onChangeSelectedMemo(memo);}}>
+            <div className="AfterTime">{getCreatedAt(createdAt)}</div>
             <div>
                 <h1>{memo.Title}</h1>
                 <p>{memo.Content}</p>

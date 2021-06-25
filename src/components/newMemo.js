@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 
@@ -40,28 +40,34 @@ const NewMemoBlock= styled.form`
     }
 `
 
-function NewMemo({memos, 아이디, onUpdate, onUpdate2}){
+function NewMemo({memos, 아이디, selectedMemo, onUpdate}){
 
-    const[value,setValue] = useState('');
-    const[value2,setValue2] =useState('');
-    const onChange = e => setValue(e.target.value);
-    const onChange2 = e => setValue2(e.target.value);
-
+    const [value,setValue] = useState('');
+    const [value2,setValue2] = useState(''); 
+    const onChange = e => {
+        setValue(e.target.value)
+    }
+    const onChange2 = e => {
+        setValue2(e.target.value)
+    }
     const onSubmit = e => {
         e.preventDefault();
-        onUpdate(아이디+1, value);
-        onUpdate2(아이디+1, value2);
+        onUpdate(selectedMemo.id,value,value2);
     }
 
-    return (
-    <>
-        <NewMemoBlock onSubmit={onSubmit}>
-            <span className="bigPosition">H1</span>
+    useEffect(()=> {
+        if(selectedMemo){
+            setValue(selectedMemo.Title);
+            setValue2(selectedMemo.Content);
+        }
+    },[selectedMemo])
 
-            <input value={value} onChange={onChange} className="big" placeholder={memos[아이디].Title}></input>
-            <textarea  value={value2} onChange={onChange2} placeholder={memos[아이디].Content}></textarea>
+    return (
+        <NewMemoBlock onSubmit={onSubmit} >
+            <span className="bigPosition">H1</span>
+            <input className="big" value={value} onChange={onChange} placeholder={''}></input>
+            <textarea value={value2} onChange={onChange2} placeholder={''}></textarea>
         </NewMemoBlock>  
-    </>
     )
 }
 

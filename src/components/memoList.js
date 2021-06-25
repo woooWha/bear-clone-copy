@@ -9,11 +9,11 @@ const MemoListBlock = styled.div`
     flex-direction: column;
 `
 
-function MemoList({memos, getItem}){
+function MemoList({memos, getItem, onChangeSelectedMemo}){
     return (
         <MemoListBlock>
             {memos.map(memo => 
-                <MemoItem memo={memo} getItem={getItem} key={memo.id}></MemoItem>
+                <MemoItem onChangeSelectedMemo={onChangeSelectedMemo} memo={memo} getItem={getItem} key={memo.id}></MemoItem>
             )}
         </MemoListBlock>
     )
