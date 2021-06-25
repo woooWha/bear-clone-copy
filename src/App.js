@@ -6,14 +6,9 @@ import NewMemo from './components/newMemo';
 import dayjs from 'dayjs';
 import { getCreatedAt } from './lib/dateUtil';
 
-let nextId = 2;
+let nextId = 1;
 function App() {
-  const [memos,setmemo] = useState([{
-    id:1,
-    Title:'베어에 환영합니다.',
-    Content:'베어는 메모와 산문을 작성할 수 있는 아름답고 편리한 앱입니다.',
-    createdAt: new Date()
-  }
+  const [memos,setmemo] = useState([
   ]); 
   const[selectedMemo,setSelectedMemo] = useState(null);
 
@@ -37,28 +32,32 @@ function App() {
         id: nextId,
         Title: '멋진 새 메모',
         Content: '편안하게 무언가 적어보세요',
-        createdAt: dayjs()
+        createdAt: new Date()
       }
       setmemo(memos.concat(memo));
       nextId++;
     }
 
   // 내용 업데이트
-    const onUpdate = (id,Title,Content) => {
+    const onUpdate = (id,Title,Content,createdAt) => {
       setmemo(memos=>
-        memos.map(memo => (memo.id ===id ? {...memo,Title, Content}: memo)));
+        memos.map(memo => (memo.id ===id ? {...memo,Title, Content,createdAt}: memo)));
     }
+
+  // 시간순 정렬
+    const timeArray = () =>
+      setmemo(memos => memos.sort((a,b) => {return b.createdAt - a.createdAt}))
 
 
 
   return (
     <div className="App">
       <div>
-        <SearchAndAdd addmemo={addmemo}></SearchAndAdd>
+        <SearchAndAdd timeArray={timeArray} addmemo={addmemo}></SearchAndAdd>
         <MemoList onChangeSelectedMemo={onChangeSelectedMemo} memos={memos} getItem={getItem}></MemoList>
       </div>
 
-      <NewMemo selectedMemo={selectedMemo} onUpdate={onUpdate} setmemo={setmemo} AddMeme={addmemo} memos={memos} 아이디={아이디}></NewMemo>
+      <NewMemo timeArray={timeArray} selectedMemo={selectedMemo} onUpdate={onUpdate} setmemo={setmemo} AddMeme={addmemo} memos={memos} 아이디={아이디}></NewMemo>
     </div>
   );
 }

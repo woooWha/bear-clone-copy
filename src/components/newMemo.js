@@ -40,7 +40,7 @@ const NewMemoBlock= styled.form`
     }
 `
 
-function NewMemo({memos, 아이디, selectedMemo, onUpdate}){
+function NewMemo({timeArray,memos, 아이디, selectedMemo, onUpdate}){
 
     const [value,setValue] = useState('');
     const [value2,setValue2] = useState(''); 
@@ -52,7 +52,8 @@ function NewMemo({memos, 아이디, selectedMemo, onUpdate}){
     }
     const onSubmit = e => {
         e.preventDefault();
-        onUpdate(selectedMemo.id,value,value2);
+        onUpdate(selectedMemo.id,value,value2,new Date());
+        timeArray();
     }
 
     useEffect(()=> {

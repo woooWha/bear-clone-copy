@@ -44,12 +44,12 @@ const SearchAddBlock = styled.div`
 
 
 
-function SearchAndAdd ({addmemo}) {
+function SearchAndAdd ({addmemo,timeArray}) {
 
     return (
         <SearchAndAddBlock>
             <SearchBlock placeholder='🔎메모 검색'></SearchBlock>
-            <SearchAddBlock onClick={()=>addmemo(new Date().getTime())}><MdCreate/></SearchAddBlock> 
+            <SearchAddBlock onClick={()=>{addmemo(new Date().getTime()); timeArray();}}><MdCreate/></SearchAddBlock> 
         </SearchAndAddBlock>                    /// new Date말고 클릭했을 때 고정된 시간을 어떻게 보내징..
     )
 }
